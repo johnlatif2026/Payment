@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الدفع عبر المحفظة</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      direction: rtl;
+      background: #f6f8fa;
+      padding: 30px;
+    }
+    .container {
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .wallet-number {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .file-input {
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>الدفع عبر المحفظة</h2>
+<form action="https://getform.io/f/ajjomzga" method="POST" enctype="multipart/form-data">
+      <label for="wallet">اختر نوع المحفظة:</label>
+      <select id="wallet" name="wallet" onchange="showNumber()" required>
+        <option value="">اختر...</option>
+        <option value="Vodafone">Vodafone Cash</option>
+        <option value="Orange">Orange Cash</option>
+        <option value="Etisalat">Etisalat Cash</option>
+      </select>
+
+      <div id="walletNumber" class="wallet-number" style="display: none;"></div>
+
+      <label for="name">اسمك:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="sentFrom">آخر 4 أرقام من رقم المحول:</label>
+      <input type="text" id="sentFrom" name="sentFrom" maxlength="4" required />
+
+      <label for="receiptImage">صورة إيصال الدفع:</label>
+      <input type="file" id="receiptImage" name="receiptImage" accept="image/*" required class="file-input" />
+
+      <button type="submit">إرسال</button>
+    </form>
+  </div>
+
+  <script>
+    function showNumber() {
+      var wallet = document.getElementById('wallet').value;
+      var display = document.getElementById('walletNumber');
+      var number = "";
+
+      if (wallet === "Vodafone") number = "01274445091";
+      else if (wallet === "Orange") number = "01274445091";
+      else if (wallet === "Etisalat") number = "01274445091";
+      else number = "";
+
+      if (number) {
+        display.style.display = 'block';
+        display.innerText = "رقم التحويل: " + number;
+      } else {
+        display.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
